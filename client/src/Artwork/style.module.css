@@ -1,7 +1,48 @@
+.artists {
+  font-weight: bold;
+}
+
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1000px;
+  height: 500px;
+  margin: 20px 0px 20px 0px;
+}
+
+.description {
+  font-style: italic;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 500px;
 }
 
 .image {
   max-width: 400px;
-  max-height: 600px;
+  max-height: 500px;
+}
+
+#spinner {
+  margin: 50px;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+
+.description,
+.title,
+.year {
+  word-wrap: break-word;
+  max-width: 300px;
+  margin: 10px 0px 10px 0px;
 }

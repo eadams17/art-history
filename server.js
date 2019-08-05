@@ -73,16 +73,29 @@ const getParallel = async (urls, year) => {
   // choose an artwork from the matches at random
   const key = getRandomNumber(0, i);
   const artwork = artObjects[key];
+  const newsData = data[1].fault
+    ? 'rate limit exceeded'
+    : data[1].response.docs;
+  const {
+    title,
+    medium,
+    technique,
+    people,
+    dated,
+    dimensions,
+    primaryimageurl
+  } = artwork;
 
   const responseObject = {
     artwork: {
-      title: artwork.title,
-      description: artwork.medium ? artwork.medium : artwork.technique,
-      artist: artwork.people,
-      year: `began or completed in ${year}`,
-      imageUrl: artwork.primaryimageurl
+      title: title,
+      description: medium ? medium : technique,
+      artist: people,
+      year: dated,
+      dimensions: dimensions,
+      imageUrl: primaryimageurl
     },
-    news: data[1].response.docs
+    news: newsData
   };
 
   return responseObject;

@@ -4,6 +4,6 @@
   align-items: center;
 }
 
-#spinner {
-  color: black;
+.label {
+  margin: 10px 0px 0px 0px;
 }

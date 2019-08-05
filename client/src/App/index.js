@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './style.module.css';
 import Artwork from '../Artwork';
 import Scale from '../Scale';
+import Marquee from '../Marquee';
 
 class App extends Component {
   state = { artworkInfo: null, newsInfo: null, loading: true };
@@ -33,18 +34,18 @@ class App extends Component {
   };
 
   render() {
-    const { artworkInfo, loading } = this.state;
-    console.log(this.state);
+    const { artworkInfo, newsInfo, loading } = this.state;
     return (
       <div className={styles.container}>
-        There's a story behind every work of art.
+        <p className={styles.label}>
+          Move the slider to any year to see artwork and actual New York Times
+          headlines of that time period.
+        </p>
         <Scale updateYear={this.updateYear} />
-        {loading && (
-          <i id={styles.spinner} className="fas fa-palette fa-spin fa-6x" />
-        )}
         {artworkInfo && !loading && (
           <Artwork artworkInfo={this.state.artworkInfo} />
         )}
+        {newsInfo && !loading && <Marquee newsInfo={newsInfo} />}
       </div>
     );
   }
