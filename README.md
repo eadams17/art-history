@@ -18,6 +18,8 @@ This application uses **React** on the frontend and **Node/Express** on the back
 - [Harvard Art Museums](https://github.com/harvardartmuseums/api-docs)
 - [New York Times Article Search](https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 
+For the sake of ease of startup, I have included my API keys in the `.env` file in this repo (though I normally wouldn't do this as it's not best practice).
+
 The application features a timeline slider at the top where the user can change the year (from between 1900 and 2000 at 10 breakpoints). Below the timeline, an image of an artwork in the collection is rendered along with its information (title, artist(s) name, etc). At the bottom, there is a news ticker that scrolls real New York Times headlines from that same time period.
 
 When the user changes the year on the slider, a `POST` request is made to the `getContent` route on the backend with that year. In this `getContent` API, two url strings are built for both of the 3rd party APIs. They are then passed to a function that handles parallel requests. Within this function, there are several helper functions that perform various checks on the received data (i.e. year is a match, image url is present, etc).

@@ -5,7 +5,7 @@ import Img from 'react-image';
 const Spinner = () => {
   return (
     <div className={styles.spinnerContainer}>
-      <i id={styles.spinner} className="fas fa-palette fa-spin fa-6x" />
+      <i id={styles.spinner} className="fas fa-palette fa-spin fa-10x" />
     </div>
   );
 };
