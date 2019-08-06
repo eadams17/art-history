@@ -39,13 +39,13 @@ const Artwork = ({ artworkInfo }) => {
   const artists = getArtists(artist);
   return (
     <div className={styles.container}>
-      <Img src={imageUrl} alt="" className={styles.image} loader={Spinner()} />
       <div className={styles.descriptionContainer}>
         <p className={styles.artists}>{artists}</p>
         <p className={styles.title}>{`${title}, ${year}`}</p>
         <p className={styles.description}>{description}</p>
         <p className={styles.dimensions}>{dimensions}</p>
       </div>
+      <Img src={imageUrl} alt="" className={styles.image} loader={Spinner()} />
     </div>
   );
 };

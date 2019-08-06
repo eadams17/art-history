@@ -1,4 +1,13 @@
 .container {
-  width: 1000px;
-  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: scale;
+  background-color: white;
+}
+
+.label {
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+  margin-bottom: 15px;
 }

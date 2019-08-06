@@ -4,11 +4,11 @@ import Artwork from '../Artwork';
 import Scale from '../Scale';
 import Marquee from '../Marquee';
 
-class App extends Component {
+export class App extends Component {
   state = { artworkInfo: null, newsInfo: null, loading: true };
 
   async componentDidMount() {
-    this.getContent(1919);
+    this.getContent(1900);
   }
 
   async getContent(year) {
@@ -37,10 +37,6 @@ class App extends Component {
     const { artworkInfo, newsInfo, loading } = this.state;
     return (
       <div className={styles.container}>
-        <p className={styles.label}>
-          Move the slider to any year to see artwork and actual New York Times
-          headlines of that time period.
-        </p>
         <Scale updateYear={this.updateYear} />
         {artworkInfo && !loading && (
           <Artwork artworkInfo={this.state.artworkInfo} />

@@ -4,8 +4,7 @@ import styles from './style.module.css';
 // build headlines string for marquee
 const getHeadlines = newsInfo => {
   let headlinesString = '';
-  newsInfo.forEach((article, i) => {
-    const headline = article.headline.main;
+  newsInfo.forEach((headline, i) => {
     if (i === 0) {
       headlinesString = headline;
     } else {

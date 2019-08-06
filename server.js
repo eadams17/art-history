@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const envConfigure = require('dotenv').config();
+const seedData = require('./data.json');
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
@@ -16,11 +17,9 @@ const getRandomNumber = (min, max) => {
 
 // artwork was started or finished around the same year as search query
 const yearCheck = (beginDate, endDate, year) => {
-  if (year === 2019 && (beginDate >= 2014 || endDate >= 2014)) {
+  if (beginDate >= year - 1 && beginDate <= year + 1) {
     return true;
-  } else if (beginDate >= year - 2 && beginDate <= year + 2) {
-    return true;
-  } else if (endDate >= year - 2 && endDate <= year + 2) {
+  } else if (endDate >= year - 1 && endDate <= year + 1) {
     return true;
   } else {
     return false;
@@ -72,10 +71,11 @@ const getParallel = async (urls, year) => {
   });
   // choose an artwork from the matches at random
   const key = getRandomNumber(0, i);
-  const artwork = artObjects[key];
+  // use seed data for artwork/headlines in case of API limit
+  const artwork = artObjects[key] ? artObjects[key] : seedData.artwork[year];
   const newsData = data[1].fault
-    ? 'rate limit exceeded'
-    : data[1].response.docs;
+    ? seedData.news[year]
+    : data[1].response.docs.map(article => article.headline.main);
   const {
     title,
     medium,

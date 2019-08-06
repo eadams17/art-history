@@ -1,18 +1,13 @@
 .artists {
   font-weight: bold;
+  font-size: 26px;
 }
 
 .container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 1000px;
-  height: 500px;
-  margin: 20px 0px 20px 0px;
-}
-
-.description {
-  font-style: italic;
+  align-items: center;
+  grid-area: art;
 }
 
 .descriptionContainer {
@@ -20,28 +15,41 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 500px;
+  font-family: 'Muli', sans-serif;
+  overflow: scroll;
+  max-height: 75%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 5px 5px #d8d6d6;
 }
 
 .image {
-  max-width: 400px;
-  max-height: 500px;
-}
-
-#spinner {
-  margin: 50px;
+  max-width: 50%;
+  max-height: 75%;
 }
 
 .spinnerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: 50%;
+}
+
+.title {
+  font-size: 22px;
+  font-style: italic;
 }
 
 .description,
+.dimensions {
+  font-size: 20px;
+}
+
+.artists,
+.description,
 .title,
-.year {
+.dimensions {
   word-wrap: break-word;
   max-width: 300px;
   margin: 10px 0px 10px 0px;
