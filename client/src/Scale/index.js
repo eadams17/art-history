@@ -21,8 +21,8 @@ const Scale = ({ updateYear }) => {
   return (
     <div className={styles.container}>
       <div className={styles.label}>
-        Move the slider to any year to see artwork and actual New York Times
-        headlines from that time period.
+        Click on any year to see artwork and actual New York Times headlines
+        from that time period.
       </div>
       <Slider
         min={0}
@@ -42,6 +42,8 @@ const Scale = ({ updateYear }) => {
         }}
         step={null}
         onChange={value => updateYear(YEARS[value])}
+        trackStyle={{ backgroundColor: '#1FD8FC' }}
+        className={styles.scale}
       />
     </div>
   );

@@ -20,6 +20,32 @@ const yearCheck = (beginDate, endDate, year) => {
   }
 };
 
+// get random date within span of year param
+const getDateQuery = year => {
+  const startDate = new Date(year, 1, 1);
+  const endDate = new Date(year, 12, 31);
+  const randomDate = dateGenerator.getRandomDateInRange(startDate, endDate);
+  const dateString = dateFormat(randomDate, 'yyyy-mm-dd');
+  return `fq=pub_date:("${dateString}")`;
+};
+
+// build artists string accounting for possibility of multiple artists/ artist is unknown
+const getArtists = artist => {
+  let artistsString = '';
+  if (!artist) {
+    return 'Unidentified Artist';
+  }
+  artist.forEach((person, i) => {
+    const name = person.name;
+    if (i === 0) {
+      artistsString = name;
+    } else {
+      artistsString = artistsString + ', ' + name;
+    }
+  });
+  return artistsString;
+};
+
 const requestAsync = url => {
   return new Promise((resolve, reject) => {
     request(url, (err, response, body) => {
@@ -64,12 +90,13 @@ const getParallel = async (urls, year) => {
     dimensions,
     primaryimageurl
   } = artwork;
+  const artists = getArtists(people);
 
   const responseObject = {
     artwork: {
       title: title,
       description: medium ? medium : technique,
-      artist: people,
+      artist: artists,
       year: dated,
       dimensions: dimensions,
       imageUrl: primaryimageurl
@@ -78,14 +105,6 @@ const getParallel = async (urls, year) => {
   };
 
   return responseObject;
-};
-
-const getDateQuery = year => {
-  const startDate = new Date(year, 1, 1);
-  const endDate = new Date(year, 12, 31);
-  const randomDate = dateGenerator.getRandomDateInRange(startDate, endDate);
-  const dateString = dateFormat(randomDate, 'yyyy-mm-dd');
-  return `fq=pub_date:("${dateString}")`;
 };
 
 module.exports = {

@@ -1,5 +1,7 @@
 .container {
   grid-area: news;
+  display: flex;
+  align-items: center;
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
@@ -12,6 +14,7 @@
   padding-left: 100%;
   animation: marquee 90s linear infinite;
   font-family: 'Special Elite', cursive;
+  font-size: 1em;
 }
 @keyframes marquee {
   0% {
@@ -19,5 +22,21 @@
   }
   100% {
     transform: translate(-100%, 0);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .headlines {
+    font-size: 1.2em;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .headlines {
+    font-size: 1.4em;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .headlines {
+    font-size: 1.6em;
   }
 }

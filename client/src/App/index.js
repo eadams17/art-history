@@ -24,8 +24,7 @@ export class App extends Component {
     }
     this.setState({
       artworkInfo: responseObject.artwork,
-      newsInfo: responseObject.news,
-      loading: false
+      newsInfo: responseObject.news
     });
   }
 
@@ -33,13 +32,22 @@ export class App extends Component {
     this.getContent(year);
   };
 
+  imageLoaded = () => {
+    this.setState({ loading: false });
+  };
+
   render() {
+    console.log('state', this.state);
     const { artworkInfo, newsInfo, loading } = this.state;
     return (
       <div className={styles.container}>
         <Scale updateYear={this.updateYear} />
-        {artworkInfo && !loading && (
-          <Artwork artworkInfo={this.state.artworkInfo} />
+        {artworkInfo && (
+          <Artwork
+            artworkInfo={artworkInfo}
+            loading={loading}
+            imageLoaded={this.imageLoaded}
+          />
         )}
         {newsInfo && !loading && <Marquee newsInfo={newsInfo} />}
       </div>

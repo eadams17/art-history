@@ -1,33 +1,7 @@
 import React from 'react';
 import styles from './style.module.css';
-import Img from 'react-image';
 
-const Spinner = () => {
-  return (
-    <div className={styles.spinnerContainer}>
-      <i id={styles.spinner} className="fas fa-palette fa-spin fa-10x" />
-    </div>
-  );
-};
-
-// build artists string accounting for possibility of multiple artists/ artist is unknown
-const getArtists = artist => {
-  let artistsString = '';
-  if (!artist) {
-    return 'Unidentified Artist';
-  }
-  artist.forEach((person, i) => {
-    const name = person.name;
-    if (i === 0) {
-      artistsString = name;
-    } else {
-      artistsString = artistsString + ', ' + name;
-    }
-  });
-  return artistsString;
-};
-
-const Artwork = ({ artworkInfo }) => {
+const Artwork = ({ artworkInfo, imageLoaded, loading }) => {
   const {
     title,
     description,
@@ -36,16 +10,29 @@ const Artwork = ({ artworkInfo }) => {
     imageUrl,
     artist
   } = artworkInfo;
-  const artists = getArtists(artist);
+  const visibility = loading ? 'hidden' : 'visible';
+
   return (
     <div className={styles.container}>
-      <div className={styles.descriptionContainer}>
-        <p className={styles.artists}>{artists}</p>
+      {loading && (
+        <i id={styles.spinner} className="fas fa-palette fa-spin fa-10x" />
+      )}
+      <div
+        className={styles.descriptionContainer}
+        style={{ visibility: visibility }}
+      >
+        <p className={styles.artists}>{artist}</p>
         <p className={styles.title}>{`${title}, ${year}`}</p>
         <p className={styles.description}>{description}</p>
         <p className={styles.dimensions}>{dimensions}</p>
       </div>
-      <Img src={imageUrl} alt="" className={styles.image} loader={Spinner()} />
+      <img
+        src={imageUrl}
+        alt=""
+        className={styles.image}
+        style={{ visibility: visibility }}
+        onLoad={() => imageLoaded()}
+      />
     </div>
   );
 };
