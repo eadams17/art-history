@@ -37,7 +37,6 @@ export class App extends Component {
   };
 
   render() {
-    console.log('state', this.state);
     const { artworkInfo, newsInfo, loading } = this.state;
     return (
       <div className={styles.container}>
