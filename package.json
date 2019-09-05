@@ -5,7 +5,8 @@
     "setup": "(cd client && yarn install) && yarn install",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && yarn install && yarn run build && yarn install"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
