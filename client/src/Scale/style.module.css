@@ -4,13 +4,14 @@
   justify-content: center;
   grid-area: scale;
   background-color: white;
+  padding: 0px 20px 10px 20px;
 }
 
 .label {
   text-align: center;
   font-family: 'Muli', sans-serif;
-  margin-bottom: 15px;
-  font-size: 1em;
+  margin-bottom: 5px;
+  font-size: 0.9em;
 }
 
 span[class*='rc-slider-mark-text'] {

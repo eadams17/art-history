@@ -91,3 +91,9 @@
     font-size: 1.6em;
   }
 }
+
+@media (hover: none) {
+  .descriptionContainer {
+    margin-right: 15px;
+  }
+}
